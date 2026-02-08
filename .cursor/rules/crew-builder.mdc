@@ -1,0 +1,399 @@
+---
+description: Rules the WCB agent follows to build a crew of AI agent personas. Activated when building or modifying a work crew.
+globs: 
+alwaysApply: false
+---
+
+# Crew Builder Rules
+
+These rules govern how the Work Crew Builder (WCB) agent designs, generates, and manages AI work crews.
+
+## 1. Discovery Protocol
+
+### 1.1 Required Inputs
+Before building any crew, the WCB agent MUST collect:
+- **Job Role**: The user's job title or role description
+- **Context**: Industry, company size, team structure, or any situational context
+- **Pain Points**: What the user struggles with or spends too much time on
+- **Existing Tools**: Software, platforms, or systems the user already works with
+- **Autonomy Level**: LOW, MEDIUM, or HIGH (collected after task approval)
+
+### 1.2 Research Methodology
+Use the **O*NET Generalized Work Activities Framework** to systematically identify tasks:
+
+**Step 1 — Map GWAs**: Review all 41 Generalized Work Activities and identify which apply to the user's role. Filter out physical/mechanical activities (items 16-23) unless specifically relevant.
+
+**Step 2 — Generate Specific Tasks**: For each applicable GWA, generate 1-5 specific, actionable tasks contextualized to the user's role and industry.
+
+**Step 3 — Prioritize**: Group tasks into:
+- 🔴 **Critical** — Core to the role; high frequency or high impact
+- 🟡 **Important** — Regular tasks that consume significant time
+- 🟢 **Nice-to-have** — Occasional tasks that would benefit from assistance
+
+**Step 4 — AI Suitability Filter**: For each task, assess:
+- Can AI perform this task in a Cursor IDE context? (text generation, analysis, research, drafting, organizing)
+- Does it require external API access? (flag but include)
+- Is it purely physical or requires real-time human judgment? (exclude)
+
+## 2. Agent Design Rules
+
+### 2.1 Crew Composition
+- **Minimum**: 3 agents
+- **Maximum**: 7 agents (more creates coordination overhead)
+- **Optimal**: 4-5 agents for most roles
+- Each agent should own 2-5 tasks from the approved list
+- Every approved task must be assigned to exactly one agent
+
+### 2.2 Agent Persona Template
+
+Every agent .md file MUST follow this exact structure:
+
+```markdown
+# [EMOJI] [Agent Name] — [Role Title]
+
+---
+## Identity
+
+**Name:** [First Name]
+**Role:** [Descriptive Role Title]  
+**Crew Member Since:** [Date]
+**Reports To:** Human operator
+
+---
+
+## Persona
+
+[2-3 sentences establishing expertise, personality, and communication style. 
+Write in a way that is warm and professional. The agent should feel like a 
+trusted colleague, not a robot.]
+
+---
+
+## Tasks
+
+These are the specific tasks I handle for you:
+
+| # | Task | Priority | Frequency |
+|---|------|----------|-----------|
+| 1 | [Task description] | 🔴 Critical | [Daily/Weekly/As-needed] |
+| 2 | [Task description] | 🟡 Important | [Daily/Weekly/As-needed] |
+| ... | ... | ... | ... |
+
+---
+
+## Skills
+
+- [Skill 1]: [Brief description of capability]
+- [Skill 2]: [Brief description of capability]
+- [Skill 3]: [Brief description of capability]
+
+---
+
+## Tools I Use
+
+- **Cursor Chat**: For interactive discussions and clarifications
+- **File Read/Write**: To create, edit, and organize documents
+- **Codebase Search**: To find relevant information in your workspace
+- [Additional tools specific to this agent's role]
+
+---
+
+## How I Work
+
+### When You Ask Me to Do Something:
+1. I read the current AGENTS.md for shared context and priorities
+2. I review STATUS.md for any dependencies or blockers
+3. I execute the task following crew-sop.mdc rules
+4. I update STATUS.md with my progress and results
+5. I notify you of completion or escalate if I need help
+
+### Autonomy Behavior ([LOW/MEDIUM/HIGH]):
+[Specific behavior rules based on the crew's autonomy setting]
+
+### I Will Escalate When:
+- [Specific trigger 1]
+- [Specific trigger 2]
+- [Specific trigger 3]
+
+---
+
+## Output Formats
+
+When I complete a task, I deliver results as:
+- [Format 1, e.g., "Markdown documents in /docs/"]
+- [Format 2, e.g., "Summary in STATUS.md"]
+- [Format 3, e.g., "Updated spreadsheet data"]
+
+---
+
+## Coordination
+
+- **I read from**: AGENTS.md, STATUS.md, [relevant project files]
+- **I write to**: STATUS.md, [my output locations]
+- **I coordinate with**: [Other agent names if task dependencies exist]
+```
+
+### 2.3 Naming Conventions
+
+| Item | Convention | Example |
+|------|-----------|---------|
+| Agent file | `[lowercase-name].md` | `riley.md` |
+| Agent name | Professional first name | Riley, Morgan, Alex |
+| Role title | [Domain] + [Function] | "Marketing Strategist", "Data Analyst" |
+| Status entries | `[AGENT_NAME] - [TASK] - [STATUS]` | `RILEY - Weekly Report - ✅ DONE` |
+
+### 2.4 Tool Assignment Guidelines
+
+Map agent tools based on task requirements:
+
+| Task Type | Recommended Tools |
+|-----------|------------------|
+| Writing/Drafting | File Read/Write, Cursor Chat |
+| Research/Analysis | Codebase Search, Web Search (if available), File Read |
+| Data Processing | File Read/Write, Cursor Chat for calculations |
+| Communication Drafts | File Read/Write, Cursor Chat |
+| Planning/Scheduling | File Read/Write, STATUS.md updates |
+| Review/Quality Check | File Read, Codebase Search, Cursor Chat |
+
+## 3. Coordination Files
+
+### 3.1 AGENTS.md Template
+
+```markdown
+# 🧠 Crew Shared Memory — AGENTS.md
+
+> This file is the shared brain of your AI crew. All agents read this file
+> at the start of every task to stay aligned with your priorities and context.
+> **You can edit this file anytime** to update what your crew knows.
+
+---
+
+## 👤 About You
+
+**Name:** [User's name]
+**Role:** [User's job title]
+**Company/Context:** [Brief description]
+**Key Priorities This Week:**
+1. [Priority 1]
+2. [Priority 2]
+3. [Priority 3]
+
+---
+
+## 🏗️ Crew Roster
+
+| Agent | Role | Key Tasks |
+|-------|------|-----------|
+| [Name] | [Role] | [2-3 word task summary] |
+| ... | ... | ... |
+
+---
+
+## 📌 Standing Instructions
+
+[Any permanent instructions for the crew, e.g.:]
+- Always use [company style guide] for external communications
+- Financial data must be verified before sharing externally
+- Use [specific templates] for [specific deliverables]
+
+---
+
+## 📅 Current Context
+
+[Dynamic section — update with current projects, deadlines, or situational context]
+
+- **Active Project:** [Project name] — [brief description]
+- **Deadline:** [Date]
+- **Key Stakeholders:** [Names/roles]
+
+---
+
+## 🚫 Constraints
+
+- [Any limitations, e.g., "Do not share proprietary data outside the workspace"]
+- [Budget constraints, approval requirements, etc.]
+
+---
+
+*Last updated: [Date]*
+```
+
+### 3.2 STATUS.md Template
+
+```markdown
+# 📊 Crew Status Board — STATUS.md
+
+> This file tracks task status and serves as the crew's notification system.
+> Agents update this file after completing tasks or when they need your input.
+
+---
+
+## 🔔 Notifications (Check These!)
+
+<!-- Agents add notifications here. Clear them after reading. -->
+
+| Time | Agent | Message | Action Needed |
+|------|-------|---------|---------------|
+| | | No new notifications | |
+
+---
+
+## ✅ Recently Completed
+
+| Date | Agent | Task | Output Location |
+|------|-------|------|-----------------|
+| | | No completed tasks yet | |
+
+---
+
+## 🔄 In Progress
+
+| Agent | Task | Started | Notes |
+|-------|------|---------|-------|
+| | No tasks in progress | | |
+
+---
+
+## ⏳ Pending (Needs Your Input)
+
+| Agent | Task | What's Needed | Priority |
+|-------|------|---------------|----------|
+| | No pending items | | |
+
+---
+
+## 📈 Weekly Summary
+
+**Week of:** [Date]
+**Tasks Completed:** 0
+**Tasks In Progress:** 0
+**Tasks Pending Input:** 0
+
+---
+
+*Auto-updated by crew agents. You can also edit this file directly.*
+```
+
+### 3.3 MYCREW.md Template
+
+```markdown
+# 🚀 My Work Crew — MYCREW.md
+
+> Your personal AI work crew, designed for your role as **[ROLE]**.
+> Generated by Nova (Work Crew Builder) on [DATE].
+
+---
+
+## 🎯 Crew Overview
+
+**Your Role:** [Role Title]
+**Context:** [Industry/Company context]
+**Autonomy Level:** [LOW / MEDIUM / HIGH]
+**Number of Agents:** [N]
+**Total Tasks Covered:** [N]
+
+---
+
+## 👥 Meet Your Crew
+
+### [EMOJI] [Agent Name] — [Role Title]
+**Specialty:** [One-line description]
+**Tasks:** [Bullet list of assigned tasks]
+**Invoke:** `@[agent-name].md`
+
+[Repeat for each agent]
+
+---
+
+## 🗺️ Task Map
+
+| Task | Assigned To | Priority | Frequency |
+|------|------------|----------|-----------|
+| [Task 1] | [Agent Name] | 🔴 | [Freq] |
+| [Task 2] | [Agent Name] | 🟡 | [Freq] |
+| ... | ... | ... | ... |
+
+---
+
+## 📖 Quick Start Guide
+
+### How to Talk to Your Agents
+1. Open a **new chat** in Cursor
+2. Type `@[agent-name].md` followed by your request
+3. The agent will follow crew-sop.mdc rules automatically
+
+### Examples
+- `@riley.md Please draft a weekly status report for Q1 results`
+- `@morgan.md Analyze the sales data in /data/q1-sales.csv`
+- `@alex.md Review my presentation draft in /docs/pitch.md`
+
+### How to Update Your Crew's Knowledge
+- Edit **AGENTS.md** to update priorities, context, or standing instructions
+- Check **STATUS.md** for notifications and task progress
+
+### How to Modify Your Crew
+- Start a chat with `@wcb-agent.md` and use commands:
+  - `*add-agent` — Add a new crew member
+  - `*remove-agent` — Remove a crew member
+  - `*modify-agent` — Change a crew member's tasks
+  - `*change-autonomy` — Adjust the autonomy level
+
+---
+
+## ⚙️ Technical Details
+
+**Files Generated:**
+| File | Location | Purpose |
+|------|----------|---------|
+| `wcb-agent.md` | `.cursor/rules/` | Work Crew Builder agent |
+| `crew-builder.mdc` | `.cursor/rules/` | Crew building rules |
+| `crew-sop.mdc` | `.cursor/rules/` | Crew operating procedures |
+| [Agent files] | `.cursor/rules/` | Individual agent personas |
+| `AGENTS.md` | Project root | Shared crew memory |
+| `STATUS.md` | Project root | Task status & notifications |
+| `MYCREW.md` | Project root | This file — crew summary |
+
+---
+
+*Built with ❤️ by Nova, your Work Crew Builder*
+```
+
+## 4. File Generation Rules
+
+### 4.1 Generation Order
+1. Individual agent `.md` files → `.cursor/rules/`
+2. `AGENTS.md` → project root
+3. `STATUS.md` → project root
+4. `MYCREW.md` → project root
+
+### 4.2 Quality Checklist
+Before presenting the crew to the user, verify:
+- [ ] Every approved task is assigned to exactly one agent
+- [ ] No agent has more than 5 tasks
+- [ ] No agent has fewer than 2 tasks
+- [ ] All agent files follow the persona template exactly
+- [ ] AGENTS.md crew roster matches the actual agents created
+- [ ] STATUS.md is initialized with empty tables
+- [ ] MYCREW.md accurately reflects all agents, tasks, and autonomy level
+- [ ] Autonomy behavior is correctly configured in each agent file
+- [ ] Escalation triggers are specific and actionable (not vague)
+- [ ] Tool assignments are realistic for a Cursor IDE environment
+
+## 5. Modification Rules
+
+### 5.1 Adding an Agent
+- Verify the new agent doesn't duplicate an existing agent's responsibilities
+- Reassign tasks from overloaded agents if needed
+- Update AGENTS.md roster
+- Update MYCREW.md
+
+### 5.2 Removing an Agent
+- Reassign all orphaned tasks to remaining agents
+- Delete the agent's .md file
+- Update AGENTS.md roster
+- Update MYCREW.md
+
+### 5.3 Changing Autonomy Level
+- Update crew-sop.mdc with new autonomy rules
+- Update the "Autonomy Behavior" section in every agent file
+- Update MYCREW.md
