@@ -1,4 +1,4 @@
-# Work Crew Builder (WCB)
+# NOVA - Work Crew Builder (WCB)
 
 A **zero-code, drag-and-drop system** for Cursor IDE that lets any professional — regardless of technical skill — generate a custom team of AI agent personas tailored to their specific job.
 
