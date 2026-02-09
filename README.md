@@ -18,6 +18,24 @@ Work Crew Builder uses the **O*NET Generalized Work Activities Framework** (41 s
 - Shared crew memory (`AGENTS.md`) and task board (`STATUS.md`)
 - Operating rules aligned with Anthropic and BMAD Method practices
 - A crew summary and reference guide (`MYCREW.md`)
+- A **project-context** folder for shared knowledge and crew outputs
+
+## Project context folder
+
+`project-context/` is the primary place for long-term knowledge and artifacts your crew reads and writes.
+
+**Description:** Crew agents treat this folder as the main store for briefs, research, plans, drafts, and final deliverables. It keeps outputs organized and avoids clutter in the project root.
+
+**Usage:**
+
+- **You:** Drop any documents you want the crew to use (briefs, specs, examples) into `project-context/`. Agents will look there when tasks are relevant.
+- **Crew:** Agents save new artifacts into subfolders by type:
+  - `project-context/plans/` — Strategy and planning
+  - `project-context/research/` — Research and analysis
+  - `project-context/drafts/` — Writing and drafts
+  - `project-context/final/` — Final, user-facing outputs
+
+The folder is created when you build a crew; add these subfolders as needed or let the crew create them.
 
 ## Repository Contents
 
@@ -28,6 +46,7 @@ Work Crew Builder uses the **O*NET Generalized Work Activities Framework** (41 s
 | `crew-sop.mdc` | Operating procedures for all crew agents |
 | `INSTALL-GUIDE.md` | Step-by-step installation (no coding required) |
 | `wcb-project-plan.md` | Full project plan and architecture |
+| `project-context/` | Shared knowledge and crew outputs (plans, research, drafts, final) |
 
 ## Requirements
 
