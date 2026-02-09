@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The Work Crew Builder is a **zero-code, drag-and-drop system** that any professional — regardless of technical skill — can install in Cursor IDE to generate a custom team of AI agent personas tailored to their specific job. The system uses the O*NET Generalized Work Activities Framework (41 standardized work activities used to classify all 900+ occupations in the US labor market) as its analytical backbone, combined with best-in-class context engineering practices from Anthropic and the BMAD Method's agent-as-code paradigm.
+The Work Crew Builder is a **zero-code, drag-and-drop system** that any professional — regardless of technical skill — can install in Cursor IDE to generate a custom team of AI agent personas tailored to their specific job. The system uses the O*NET Generalized Work Activities Framework (41 standardized work activities used to classify all 900+ occupations in the US labor market) as its analytical backbone, combined with best-in-class context engineering practices from Anthropic and the AAMAD Method's agent-as-code paradigm.
 
 ---
 
@@ -24,6 +24,11 @@ My-Work-Crew/                     ← User's workspace
 ├── AGENTS.md                     ← [Generated] Shared crew memory
 ├── STATUS.md                     ← [Generated] Task status & notification board
 ├── MYCREW.md                     ← [Generated] Crew summary & user guide
+├── project-context/              ← Shared knowledge & crew outputs
+│   ├── plans/                    ← Strategy & planning artifacts
+│   ├── research/                 ← Research & analysis
+│   ├── drafts/                   ← Writing & drafts
+│   └── final/                    ← Final, user-facing deliverables
 └── INSTALL-GUIDE.md              ← Installation instructions
 ```
 
@@ -35,6 +40,7 @@ My-Work-Crew/                     ← User's workspace
 | 2 | `crew-builder.mdc` | MDC rule file | Rules Nova follows to design & generate crews |
 | 3 | `crew-sop.mdc` | MDC rule file | Operating procedures all crew agents follow |
 | 4 | `INSTALL-GUIDE.md` | Markdown | Non-technical installation walkthrough |
+| 5 | `project-context/` | Folder | Primary long-term knowledge store; user drops briefs/specs here; crew saves plans, research, drafts, and final outputs into subfolders |
 
 ---
 
@@ -72,6 +78,7 @@ Nova designs the optimal crew (3-7 agents) and generates:
 - `AGENTS.md` — shared memory file with user context and crew roster
 - `STATUS.md` — notification board and task tracker
 - `MYCREW.md` — complete crew summary with quick-start guide
+- `project-context/` — folder for shared knowledge and structured outputs (plans, research, drafts, final)
 
 ### Step 5: Operation
 
@@ -80,9 +87,11 @@ The user invokes any agent in a new chat: `@riley.md Please draft a weekly statu
 The agent:
 1. Reads `AGENTS.md` for context
 2. Reads `STATUS.md` for dependencies
-3. Executes following `crew-sop.mdc` rules
-4. Updates `STATUS.md` with results
-5. Notifies the user per autonomy level
+3. Scans `project-context/` for relevant documents (briefs, specs, prior work)
+4. Executes following `crew-sop.mdc` rules
+5. Saves substantial artifacts into `project-context/` (e.g. plans/, research/, drafts/, final/)
+6. Updates `STATUS.md` with results
+7. Notifies the user per autonomy level
 
 ---
 
@@ -111,7 +120,7 @@ The three-tier system maps to natural trust progressions: LOW for initial setup 
 | Practice | Where Implemented |
 |----------|-------------------|
 | **Smart Zone (<40% context)** | crew-sop.mdc §1.1 |
-| **External memory / note-taking** | AGENTS.md + STATUS.md pattern |
+| **External memory / note-taking** | AGENTS.md + STATUS.md + project-context/ |
 | **Structured note-taking** | STATUS.md with standardized tables |
 | **Compaction awareness** | Session management rules in crew-sop.mdc §6 |
 | **Progressive disclosure** | Agents read only relevant files per task |
