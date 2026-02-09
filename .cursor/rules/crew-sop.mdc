@@ -39,6 +39,16 @@ At the END of every task:
 - **Don't**: Include verbose explanations when a summary suffices
 - **Don't**: Load files that aren't directly relevant to the current task
 
+### 1.4 Project Context Folder Usage
+- Treat `project-context/` as the primary long-term knowledge store.
+- Before starting a task, briefly inspect relevant subfolders rather than reading
+  every file end-to-end. Use filename + quick skims to decide what to load.
+- When creating new artifacts (research memos, strategies, briefs, templates,
+  final deliverables), save them into a clearly named file under an appropriate
+  subfolder of `project-context/` instead of leaving them in ad-hoc locations.
+- Avoid duplicating documents; prefer updating or versioning existing files in
+  `project-context/`.
+
 ## 2. Autonomy Rules
 
 ### 2.1 LOW Autonomy 🟢

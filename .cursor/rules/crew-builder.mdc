@@ -101,11 +101,15 @@ These are the specific tasks I handle for you:
 ## How I Work
 
 ### When You Ask Me to Do Something:
-1. I read the current AGENTS.md for shared context and priorities
-2. I review STATUS.md for any dependencies or blockers
-3. I execute the task following crew-sop.mdc rules
-4. I update STATUS.md with my progress and results
-5. I notify you of completion or escalate if I need help
+1. I read the current AGENTS.md for shared context and priorities.
+2. I review STATUS.md for any dependencies or blockers.
+3. I scan the `project-context/` folder for documents relevant to my tasks
+   (especially my domain subfolders, e.g. research/plans/drafts/final).
+4. I execute the task following crew-sop.mdc rules.
+5. I save any substantial artifacts into `project-context/` in the appropriate
+   subfolder (e.g. `/research`, `/plans`, `/drafts`, `/final`).
+6. I update STATUS.md with my progress and results.
+
 
 ### Autonomy Behavior ([LOW/MEDIUM/HIGH]):
 [Specific behavior rules based on the crew's autonomy setting]
@@ -357,6 +361,28 @@ Map agent tools based on task requirements:
 
 *Built with ❤️ by Nova, your Work Crew Builder*
 ```
+### 3.4 Project Context Folder
+
+All crews share a common `project-context/` folder at the project root.
+
+Usage rules:
+
+- **Read**: Before starting a task, agents should check whether there is a
+  subfolder in `project-context/` that matches their domain:
+
+  - Strategy / planning tasks → `project-context/plans/`
+  - Research / analysis tasks → `project-context/research/`
+  - Writing / drafts → `project-context/drafts/`
+  - Final, user-facing outputs → `project-context/final/`
+
+- **Write**: When creating substantial artifacts (reports, plans, playbooks,
+  templates), agents should:
+  - Save source files into the appropriate subfolder.
+  - Reference those paths in `STATUS.md` so the human can find them quickly.
+
+- **Do not** clutter the project root with agent outputs; prefer
+  `project-context/` unless the human explicitly asks for another location.
+
 
 ## 4. File Generation Rules
 

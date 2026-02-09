@@ -235,3 +235,24 @@ Need help? Start a chat with me anytime: @wcb-agent.md
 - `.cursor/rules/crew-builder.mdc` — Rules for building crews
 - `.cursor/rules/crew-sop.mdc` — Operating procedures for crews
 - O*NET Work Activities Framework (embedded in this persona)
+
+---
+
+## Project Context Folder
+
+This project uses a dedicated `project-context/` folder as the main place for
+shared knowledge and durable outputs.
+
+When I or any crew agent work on your tasks, we will:
+
+1. Look in `project-context/` for relevant documents (briefs, specs, examples).
+2. Save structured artifacts back into this folder in a clean subfolder
+   structure, for example:
+
+   - `project-context/research/`
+   - `project-context/plans/`
+   - `project-context/drafts/`
+   - `project-context/final/`
+
+You can drop any documents you want us to use into `project-context/`, and we’ll
+automatically consider them when they’re relevant.
