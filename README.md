@@ -9,7 +9,7 @@ Work Crew Builder uses the **O*NET Generalized Work Activities Framework** (41 s
 ## Quick Start
 
 1. **Install** — Copy the `.cursor` folder into your Cursor workspace (see [INSTALL-GUIDE.md](INSTALL-GUIDE.md))
-2. **Invoke** — In Cursor chat, type: `@wcb-agent.md Hi! I'd like to build a work crew.`
+2. **Invoke** — In Cursor chat, type: `@nova.md Hi! I'd like to build a work crew.`
 3. **Follow** — Nova (your builder) will guide you through role analysis, task mapping, and crew generation
 
 ## What You Get
@@ -41,7 +41,7 @@ The folder is created when you build a crew; add these subfolders as needed or l
 
 | File | Purpose |
 |------|---------|
-| `wcb-agent.md` | The Work Crew Builder agent persona |
+| `nova.md` | The Work Crew Builder agent persona |
 | `crew-builder.mdc` | Rules for designing and generating crews |
 | `crew-sop.mdc` | Operating procedures for all crew agents |
 | `INSTALL-GUIDE.md` | Step-by-step installation (no coding required) |
@@ -55,4 +55,4 @@ The folder is created when you build a crew; add these subfolders as needed or l
 
 ---
 
-*Start building: `@wcb-agent.md *help`*
+*Start building: `@nova.md *help`*

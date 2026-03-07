@@ -14,7 +14,7 @@ The Work Crew Builder is a **zero-code, drag-and-drop system** that any professi
 My-Work-Crew/                     ← User's workspace
 ├── .cursor/
 │   └── rules/
-│       ├── wcb-agent.md          ← The Work Crew Builder agent persona
+│       ├── nova.md          ← The Work Crew Builder agent persona
 │       ├── crew-builder.mdc      ← Rules for building crews
 │       ├── crew-sop.mdc          ← Operating rules for the crew (alwaysApply: true)
 │       ├── riley.md              ← [Generated] Agent persona #1
@@ -36,7 +36,7 @@ My-Work-Crew/                     ← User's workspace
 
 | # | Artifact | Format | Purpose |
 |---|----------|--------|---------|
-| 1 | `wcb-agent.md` | Markdown persona | The builder agent — "Nova" — invoked via `@wcb-agent.md` |
+| 1 | `nova.md` | Markdown persona | The builder agent — "Nova" — invoked via `@nova.md` |
 | 2 | `crew-builder.mdc` | MDC rule file | Rules Nova follows to design & generate crews |
 | 3 | `crew-sop.mdc` | MDC rule file | Operating procedures all crew agents follow |
 | 4 | `INSTALL-GUIDE.md` | Markdown | Non-technical installation walkthrough |
@@ -52,7 +52,7 @@ The user downloads a `.zip` containing the `.cursor/` folder with the three core
 
 ### Step 2: Invoke the Builder
 
-User opens Cursor chat and types: `@wcb-agent.md Hi! I'd like to build a work crew.`
+User opens Cursor chat and types: `@nova.md Hi! I'd like to build a work crew.`
 
 Nova greets the user warmly and collects:
 - Job role & title

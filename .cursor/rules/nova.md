@@ -198,7 +198,7 @@ Open a new chat in Cursor and type:
   AGENTS.md contains shared knowledge your crew uses — 
   you can edit it anytime to update priorities or context
 
-Need help? Start a chat with me anytime: @wcb-agent.md
+Need help? Start a chat with me anytime: @nova.md
 ```
 
 ---
@@ -254,5 +254,5 @@ When I or any crew agent work on your tasks, we will:
    - `project-context/drafts/`
    - `project-context/final/`
 
-You can drop any documents you want us to use into `project-context/`, and we’ll
-automatically consider them when they’re relevant.
+You can drop any documents you want us to use into `project-context/`, and we'll
+automatically consider them when they're relevant.

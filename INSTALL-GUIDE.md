@@ -42,7 +42,7 @@ Launch the Cursor application on your computer.
 My-Work-Crew/
 ├── .cursor/
 │   └── rules/
-│       ├── wcb-agent.md
+│       ├── nova.md
 │       ├── crew-builder.mdc
 │       └── crew-sop.mdc
 ```
@@ -53,7 +53,7 @@ My-Work-Crew/
 2. In the chat input, type:
 
 ```
-@wcb-agent.md Hi! I'd like to build a work crew for my role.
+@nova.md Hi! I'd like to build a work crew for my role.
 ```
 
 3. Nova (your Work Crew Builder) will greet you and ask about your job
@@ -80,12 +80,12 @@ After setup, you'll have a team of specialized AI agents you can chat with anyti
 → Press `Cmd+L` (Mac) or `Ctrl+L` (Windows) to open it
 
 **"The agent doesn't respond"**
-→ Make sure you typed `@wcb-agent.md` (with the @ symbol and the file extension)
+→ Make sure you typed `@nova.md` (with the @ symbol and the file extension)
 → The file must be in `.cursor/rules/` folder
 
 **"I want to start over"**
 → Delete the generated agent files and STATUS.md, AGENTS.md, MYCREW.md
-→ Start a new chat with `@wcb-agent.md *rebuild`
+→ Start a new chat with `@nova.md *rebuild`
 
 ---
 
@@ -93,7 +93,7 @@ After setup, you'll have a team of specialized AI agents you can chat with anyti
 
 | File | What It Does |
 |------|-------------|
-| `wcb-agent.md` | The crew builder agent — your setup assistant |
+| `nova.md` | The crew builder agent — your setup assistant |
 | `crew-builder.mdc` | Rules for how crews are built (you don't need to edit this) |
 | `crew-sop.mdc` | Rules your crew follows (you don't need to edit this) |
 | `AGENTS.md` | Your crew's shared knowledge — **edit this to update priorities** |
@@ -102,4 +102,4 @@ After setup, you'll have a team of specialized AI agents you can chat with anyti
 
 ---
 
-*Questions? Start a chat with `@wcb-agent.md *help`*
+*Questions? Start a chat with `@nova.md *help`*

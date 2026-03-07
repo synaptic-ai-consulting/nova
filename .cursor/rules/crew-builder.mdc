@@ -336,7 +336,7 @@ Map agent tools based on task requirements:
 - Check **STATUS.md** for notifications and task progress
 
 ### How to Modify Your Crew
-- Start a chat with `@wcb-agent.md` and use commands:
+- Start a chat with `@nova.md` and use commands:
   - `*add-agent` — Add a new crew member
   - `*remove-agent` — Remove a crew member
   - `*modify-agent` — Change a crew member's tasks
@@ -349,7 +349,7 @@ Map agent tools based on task requirements:
 **Files Generated:**
 | File | Location | Purpose |
 |------|----------|---------|
-| `wcb-agent.md` | `.cursor/rules/` | Work Crew Builder agent |
+| `nova.md` | `.cursor/rules/` | Work Crew Builder agent |
 | `crew-builder.mdc` | `.cursor/rules/` | Crew building rules |
 | `crew-sop.mdc` | `.cursor/rules/` | Crew operating procedures |
 | [Agent files] | `.cursor/rules/` | Individual agent personas |
